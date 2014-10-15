@@ -1,0 +1,30 @@
+{
+  "name": "vframe",
+  "version": "0.0.1",
+  "description": "Framework for vsoft company",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vsoft-lab/vFramework.git"
+  },
+  "keywords": [
+    "framework",
+    "vsoft",
+    "node.js"
+  ],
+  "author": "NgaNguyenDuy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vsoft-lab/vFramework/issues"
+  },
+  "homepage": "https://github.com/vsoft-lab/vFramework",
+  "dependencies": {
+    "express": "^4.9.7"
+  }
+}
