@@ -3,8 +3,20 @@ var vFrameApp = require('../');
 
 var app = vFrameApp();
 
+app.use(vFrameApp.favicon());
+
 app.get('/', vFrameApp.status());
 
-app.listen(8008, function() {
-    console.log('Server was running at port 8008');
-});
+app.use(vFrameApp.urlNotFound());
+
+app.start = function() {
+    return app.listen(8008, function() {
+        app.emit('started');
+        console.log('Server was running at port 8008');
+    });
+};
+
+
+if(require.main === module) {
+    app.start();
+}
