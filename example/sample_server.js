@@ -6,12 +6,34 @@ var app = vFrameApp();
 
 app.use(vFrameApp.favicon());
 
+// app.vFrameApp.enableAuth();
+
+app.enableAuth();
+
 app.get('/', vFrameApp.status());
 
-app.use(vFrameApp.urlNotFound());
+
+app.use('/api', vFrameApp.rest());
 
 
-console.log(vFrameApp.isServer);
+// console.log(app);
+
+app.use(vFrameApp.token({
+    cookies: ['foo-auth'],
+    headers: ['foo-auth', 'X-Foo-Auth'],
+    params: ['foo-auth', 'foo_auth']
+}));
+
+
+
+
+
+
+// console.log(vFrameApp.isServer);
+
+
+
+
 // console.log(app.dataSources);
 
 // app.connector('mongodb', require('vsoft-connector-mongodb'));
@@ -23,34 +45,43 @@ console.log(vFrameApp.isServer);
 
 
 // Instance JSON document
-// var user = {
-//     name: 'ThinhNguyen',
-//     age: 27,
-//     birthday: new Date(),
-//     vip: true,
-//     address: {
-//         street: 'Bac Giang City',
-//         city: 'BG',
-//         state: 'HN',
-//         zipcode: '10000',
-//         country: 'VN'
-//     },
-//     friends: ['Nga', 'Tung'],
-//     emails: [
-//         {label: 'work', id: 'x@sample.com'},
-//         {label: 'home', id: 'x@home.com'}
-//     ],
-//     tags: []
-// };
+var user = {
+    name: 'ThinhNguyen',
+    age: 27,
+    birthday: new Date(),
+    vip: true,
+    address: {
+        street: 'Bac Giang City',
+        city: 'BG',
+        state: 'HN',
+        zipcode: '10000',
+        country: 'VN'
+    },
+    friends: ['Nga', 'Tung'],
+    emails: [
+        {label: 'work', id: 'x@sample.com'},
+        {label: 'home', id: 'x@home.com'}
+    ],
+    tags: []
+};
 
-// var ds = vFrameApp.createDataSource({
-//     connector: require('vsoft-connector-mongodb'),
-//     host: 'localhost',
-//     port: 27017,
-//     database: 'vFrameServer'
-// });
+var ds = vFrameApp.createDataSource({
+    connector: require('vsoft-connector-mongodb'),
+    host: 'localhost',
+    port: 27017,
+    database: 'vFrameServer'
+});
 
-// var User = ds.buildModelFromInstance('User', user, {idInjection: true});
+var User = ds.buildModelFromInstance('User', user, {idInjection: true});
+
+
+// var accessToken = new vFrameApp.AccessToken();
+
+// // Create token
+vFrameApp.AccessToken.createAccessTokenId(function(err, token) {
+    // console.log(token);
+});
+
 
 // var obj = new User(user);
   
@@ -63,7 +94,8 @@ console.log(vFrameApp.isServer);
 //         console.log('Found: ', u2.toObject());
 //     });
 // });
-// app.model(User);
+
+app.model(User);
 
 // var models = app.models();
 
@@ -72,6 +104,8 @@ console.log(vFrameApp.isServer);
 // });
 
 
+
+app.use(vFrameApp.urlNotFound());
 
 app.start = function() {
     return app.listen(9009, function() {
