@@ -1,6 +1,0 @@
-{
-    "restApiRoot": "/apii",
-    "host": "0.0.0.0",
-    "port": 9009,
-    "url": "http://localhost:9009/"
-}
