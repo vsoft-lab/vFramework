@@ -39,7 +39,5 @@
     "vsoft-boot": "0.0.1",
     "vsoft-connector-remote": "0.0.1"
   },
-  "devDependencies": {
-    "errorhandler": "^1.2.2"
-  }
+  "devDependencies": {}
 }
