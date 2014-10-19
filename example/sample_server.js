@@ -11,7 +11,7 @@ app.use(vFrameApp.favicon());
 boot(app, __dirname);
 
 
-app.use(vFrameApp.errorHandler());
+// console.log(vFrameApp.errorHandler.title);
 
 // app.enableAuth();
 
