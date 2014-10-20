@@ -1,6 +1,6 @@
 {
   "name": "vf",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Framework for vsoft company",
   "main": "index.js",
   "directories": {
@@ -29,7 +29,6 @@
     "bcryptjs": "^2.0.2",
     "body-parser": "^1.9.0",
     "canonical-json": "0.0.4",
-    "compression": "^1.2.0",
     "debug": "^2.0.0",
     "ejs": "^1.0.0",
     "express": "^4.9.7",
