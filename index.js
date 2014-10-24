@@ -1,6 +1,6 @@
 
 var vframe = module.exports = require('./lib/vframe');
-var datasourceJuggler = require('loopback-datasource-juggler');
+var datasourceJuggler = require('vsoft-datasource-juggler');
 
 
 /**
