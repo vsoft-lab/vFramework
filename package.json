@@ -1,6 +1,6 @@
 {
   "name": "vf",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Framework for vsoft company",
   "main": "index.js",
   "directories": {
@@ -28,6 +28,7 @@
     "async": "^0.9.0",
     "bcryptjs": "^2.0.2",
     "body-parser": "^1.9.1",
+    "serve-favicon": "^2.1.6",
     "canonical-json": "0.0.4",
     "debug": "^2.0.0",
     "ejs": "^1.0.0",
@@ -40,9 +41,5 @@
     "underscore": "^1.7.0",
     "underscore.string": "^2.3.3",
     "vsoft-connector-remote": "0.0.1"
-  },
-  "devDependencies": {
-    "loopback": "^2.5.0",
-    "loopback-boot": "^2.1.0"
   }
 }
