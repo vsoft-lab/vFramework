@@ -389,7 +389,7 @@ module.exports = function(User) {
         vframe.remoteMethod(
             UserModel.login,
             {
-                description: 'Login a user with username/email and password',
+                description: 'Đăng nhập một user sử dụng username/email và password',
                 accepts: [
                     {arg: 'credentials', type: 'object', required: true, http: {source: 'body'}},
                     {arg: 'include', type: 'string', http: {source: 'query' }, description: 'Related objects to include in the response. ' +
