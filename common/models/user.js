@@ -27,19 +27,19 @@ var vframe = require('../../lib/vframe'),
  * - ALLOW EVERYONE `findById`
  * - ALLOW OWNER `updateAttributes`
  *
- * @property {String} username Must be unique
- * @property {String} password Hidden from remote clients
- * @property {String} email Must be valid email
- * @property {Boolean} emailVerified Set when a user's email has been verified via `confirm()`
- * @property {String} verificationToken Set when `verify()` is called
+ * @property {String} username Phải là duy nhất
+ * @property {String} password Ẩn password từ phía client.
+ * @property {String} email Phải là Email hợp lệ.
+ * @property {Boolean} emailVerified Được thiết lập khi một Email của user được xác nhận thông qua `confirm()`.
+ * @property {String} verificationToken Được thiết lập khi hàm `verify` được gọi.
  *
  * @class User
  * @inherits {PersistedModel}
  */
 module.exports = function(User) {
     /**
-     * Create access token for the logged in user. This method can be overridden to
-     * customize how access tokens are generated
+     * Tạo một token cho việc đăng nhập của người dùng. Phương pháp này có thể được ghi đè để
+     * tùy chỉnh làm thế nào để access token truy cập được tạo ra.
      *
      * @param [Number} ttl The requested ttl
      * @callack {Function} cb The callback function
@@ -56,7 +56,7 @@ module.exports = function(User) {
     
     
     /**
-     * Login a user by with the given `credentials`.
+     * Đăng nhập một người dùng với thông tin của họ (username or email / password).
      *
      * ```js
      * User.login({username: 'foo', password: 'bar'}, function (err, token) {
@@ -144,7 +144,7 @@ module.exports = function(User) {
     
     
     /**
-     * Logout a user with the given accessToken id.
+     * Đăng xuất một người dùng với accessToken id.
      *
      * ```js
      * User.logout('asd0a9f8dsj9s0s3223mk', function (err) {
@@ -170,9 +170,9 @@ module.exports = function(User) {
     
     
     /**
-     * Compare the given `password` with the users hashed password.
+     * So sánh mật khẩu với mật khẩu đã được mã hóa của người dùng.
      *
-     * @param {String} password The plain text password
+     * @param {String} password Mật khẩu dạng text.
      * @returns {Boolean}
      */
     User.prototype.hasPassword = function(plain, fn) {
@@ -188,7 +188,7 @@ module.exports = function(User) {
     
     
     /**
-     * Verify a user's identity by sending them a confirmation email.
+     * Xác nhận(Confirm) một người dùng bằng việc gửi cho họ một email xác nhận.
      *
      * ```js
      * var options = {
@@ -202,16 +202,16 @@ module.exports = function(User) {
      * ```
      *
      * @options {Object} options
-     * @property {String} type Must be 'email'.
-     * @property {String} to Email address to which verification email is sent.
-     * @property {String} from Sender email addresss, for example
-     * `'noreply@myapp.com'`.
-     * @property {String} subject Subject line text.
-     * @property {String} text Text of email.
-     * @property {String} template Name of template that displays verification
-     * page, for example, `'verify.ejs'.
-     * @property {String} redirect Page to which user will be redirected after
-     * they verify their email, for example `'/'` for root URI.
+     * @property {String} Phải là một 'email'.
+     * @property {String} to địa chỉ Email mà email xác minh sẽ được gửi.
+     * @property {String} from Địa chỉ người gửi email, ví dụ:
+     * `'noreply@vsoft.vn'`.
+     * @property {String} subject Chủ đề (Subject).
+     * @property {String} text Nội dung email.
+     * @property {String} template Tên của template mà bạn muốn hiển thị cho 
+     * email xác minh, ví dụ:, `'verify.ejs'.
+     * @property {String} redirect Trang mà người dùng sẽ chuyển hướng sau 
+     * khi họ kiểm tra email của mình, ví dụ "/" cho đường dẫn thư mục gốc.
      */
     User.prototype.verify = function(options, fn) {
         var user = this;
@@ -284,7 +284,7 @@ module.exports = function(User) {
     
     
     /**
-     * Confirm the user's identity.
+     * Xác nhận(Confirm) một người dùng.
      *
      * @param {Any} userId
      * @param {String} token The validation token
@@ -323,11 +323,12 @@ module.exports = function(User) {
     
     
     /**
-     * Create a short lived acess token for temporary login. Allows users
-     * to change passwords if forgotten.
+     * Tạo một accessToken cho việc đăng nhập tạm thời. Cho phép người dùng 
+     * thay đổi mật khẩu nếu họ quên
      *
+     * 
      * @options {Object} options
-     * @prop {String} email The user's email address
+     * @prop {String} email Địa chỉ email của người sử dụng
      * @callback {Function} callback
      * @param {Error} err
      */
@@ -407,7 +408,7 @@ module.exports = function(User) {
         vframe.remoteMethod(
             UserModel.logout,
             {
-                description: 'Logout a user with access token',
+                description: 'Đăng xuất một người dùng với accessToken',
                 accepts: [
                     {arg: 'access_token', type: 'string', required: true, http: function(ctx) {
                         var req = ctx && ctx.req;
@@ -425,7 +426,7 @@ module.exports = function(User) {
         vframe.remoteMethod(
             UserModel.confirm,
             {
-                description: 'Confirm a user registration with email verification token',
+                description: 'Xác nhận việc đăng kí của người dùng thông qua một email xác minh.',
                 accepts: [
                     {arg: 'uid', type: 'string', required: true},
                     {arg: 'token', type: 'string', required: true},
@@ -438,7 +439,7 @@ module.exports = function(User) {
         vframe.remoteMethod(
             UserModel.resetPassword,
             {
-                description: 'Reset password for a user with email',
+                description: 'Thiết lập lại mật khẩu cho người sử dụng với email.',
                 accepts: [
                     {arg: 'options', type: 'object', required: true, http: {source: 'body'}}
                 ],
