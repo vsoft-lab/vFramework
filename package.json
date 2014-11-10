@@ -1,6 +1,6 @@
 {
   "name": "vf",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Framework for vsoft company",
   "main": "index.js",
   "directories": {
@@ -35,10 +35,10 @@
     "nodemailer": "^1.3.0",
     "nodemailer-stub-transport": "^0.1.4",
     "serve-favicon": "^2.1.6",
-    "vremoting": "^0.0.1",
     "uid2": "0.0.3",
     "underscore": "^1.7.0",
     "underscore.string": "^2.3.3",
+    "vremoting": "0.0.1",
     "vsoft-connector-remote": "0.0.1"
   }
 }
