@@ -9,7 +9,7 @@ var loopback = require('../../lib/vframe'),
 
 
 /**
- * Token based authentication and access control.
+ * Token cho việc xác thực và điều khiển truy cập.
  *
  * **Default ACLs**
  *

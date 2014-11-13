@@ -14,10 +14,10 @@ var vframe = require('../../lib/vframe'),
 
 
 /**
- * Built-in User model.
+ * Model User xây dựng sẵn.
  * Extends vFrame [PersistedModel](#persistedmodel-new-persistedmodel).
  *
- * Default `User` ACLs.
+ * Các quyền mặc định.
  *
  * - DENY EVERYONE `*`
  * - ALLOW EVERYONE `create`
