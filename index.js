@@ -17,5 +17,6 @@ vframe.Remote = require('vsoft-connector-remote');
 /**
  * Type
  */
+vframe.GeoPoint = require('vsoft-datasource-juggler/lib/geo').GeoPoint;
 vframe.ValidationError = vframe.Model.ValidationError;
 
