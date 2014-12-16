@@ -1,7 +1,8 @@
 
 var vframe = require('../../lib/vframe');
 var juggler = require('vsoft-datasource-juggler');
-var remoting = require('vremoting');
+// var remoting = require('vremoting');
+var remoting = require('strong-remoting');
 var cls = require('continuation-local-storage');
 
 module.exports = context;
